@@ -107,10 +107,10 @@ namespace WPF_cinema.ViewModels.Views
                     if (Regex.IsMatch(time, timeValid))
                     {
                         
-                        var ses1 = new Session(selectedFilm.FilmsId, selectedHall.HallsId, date, time);
+                        var ses1 = new Session(selectedFilm.FilmsId, selectedHall.HallsId,Convert.ToDateTime (date), TimeSpan.Parse(time));
                         ses1.Films = selectedFilm;
                         ses1.Halls = selectedHall;
-                        if (context.Sessions.FirstOrDefault(s => s.FilmsId == _selectedFilm.FilmsId && s.HallsId == selectedHall.HallsId && s.Date == date && s.Time == time) == null)
+                        if (context.Sessions.FirstOrDefault(s => s.FilmsId == _selectedFilm.FilmsId && s.HallsId == selectedHall.HallsId && s.Date == Convert.ToDateTime (date) && s.Time == TimeSpan.Parse (time)) == null)
                         {
                             context.Sessions.Add(ses1);
                             context.SaveChanges();

@@ -15,10 +15,10 @@ namespace WPF_cinema
         public int SessionId { get; set; }
         public int HallsId { get; set; }
         public int FilmsId { get; set; }
-        public string Date { get; set; }
-        public string Time { get; set; }
+        public DateTime Date { get; set; }
+        public TimeSpan Time { get; set; }
 
-        public Session(int hallsId, int filmId, string date, string time)
+        public Session(int hallsId, int filmId, DateTime date, TimeSpan time)
         {
             this.HallsId = hallsId;
             this.FilmsId = filmId;
@@ -29,10 +29,6 @@ namespace WPF_cinema
             Tickets = new List<Ticket>();
         }
 
-        public override string ToString()
-        {
-            return Date;
-        }
         
 
         public virtual Film Films { get; set; }
